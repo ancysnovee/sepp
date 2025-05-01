@@ -9,7 +9,7 @@ pipeline{
         stage("install dependency"){
             steps{
                 bat '''
-                    C:\Users\admin\AppData\Local\Programs\Python\Python313\python.exe -m venv venv
+                    C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m venv venv
                     call venv\\Scripts\\Activate
                     pip install --upgrade pip
                     pip install pytest
@@ -30,7 +30,7 @@ pipeline{
             steps{
                 bat '''
                 call venv\\Scripts\\Activate
-                C:\Users\admin\AppData\Local\Programs\Python\Python313\python.exe school.py
+                C:\\Users\\admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe school.py
             '''
 
             }
