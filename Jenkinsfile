@@ -17,16 +17,24 @@ pipeline{
             }
         }
         stage("testing"){
-            bat '''
-                call venv\\Scripts\\Activate
-                pytest test.py
-            '''
+            steps{
+                bat '''
+                    call venv\\Scripts\\Activate
+                    pytest test.py
+                '''
+
+            }
+
         }
         stage("deploy"){
-            bat '''
+            steps{
+                bat '''
                 call venv\\Scripts\\Activate
                 python school.py
             '''
+
+            }
+            
         }
     }
 }
