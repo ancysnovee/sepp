@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    stages{
+        stage("cloning"){
+            steps{
+                git url:"https://github.com/ancysnovee/sepp.git", branch:"main"
+            }
+        }
+        stage("install dependency"){
+            steps{
+                bat '''
+                    python -m venv venv
+                    call venv\\Scripts\\Activate
+                    pip install --upgrade pip
+                    pip install pytest
+                '''
+            }
+        }
+        stage("testing"){
+            bat '''
+                call venv\\Scripts\\Activate
+                pytest test.py
+            '''
+        }
+        stage("deploy"){
+            bat '''
+                call venv\\Scripts\\Activate
+                python school.py
+            '''
+        }
+    }
+}
